@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reder corectly 1`] = `
+<div>
+  <label
+    class="form-input"
+  >
+    <span>
+      Description
+    </span>
+    <input
+      name="desc"
+      placeholder="Type description"
+      type="text"
+      value="hello"
+    />
+  </label>
+</div>
+`;

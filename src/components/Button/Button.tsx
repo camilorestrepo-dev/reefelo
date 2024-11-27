@@ -5,7 +5,7 @@ export type ButtonProps = {
   label: string;
   type?: "button" | "reset" | "submit";
   variant: "solid" | "outline" | "link";
-  onClick?: () => void;
+  onClick?: VoidFunction;
 };
 
 const Button: React.FC<ButtonProps> = ({ label, type, variant, onClick }: ButtonProps) => (

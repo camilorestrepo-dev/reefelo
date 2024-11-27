@@ -13,21 +13,6 @@
     max-width: 600px;
     margin: 0 auto;
 
-    label {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: $spacing-4;
-      margin-bottom: $spacing-16;
-
-      input {
-        padding: $spacing-4 $spacing-8;
-        font-size: large;
-        border-radius: $radius-5;
-        border: 1px solid $grey;
-      }
-    }
-
     .buttons-section {
       display: flex;
       justify-content: flex-end;
