@@ -1,8 +1,11 @@
+import { TicketData } from "./ticket";
+
 export interface RaffleData {
   name: string;
   description: string;
   price?: number;
   prize: string;
-  // date:
-  ticketsNumber: number;
+  ticketsNumber: 10 | 100 | 1000;
+  id?: string;
+  tickets?: TicketData[];
 }

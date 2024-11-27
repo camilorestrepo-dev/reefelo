@@ -12,3 +12,16 @@ test("reder corectly", () => {
   );
   expect(component.container).toMatchSnapshot();
 });
+
+test("reder corectly with error", () => {
+  const component = render(
+    <FormInputText
+      defaultValue="hello"
+      label="Description"
+      name="desc"
+      placeholder="Type description"
+      error="Required field"
+    />,
+  );
+  expect(component.container).toMatchSnapshot();
+});

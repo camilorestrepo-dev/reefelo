@@ -3,9 +3,14 @@
     "cancel": "Cancelar",
     "save": "Guardar"
   },
+  "error": {
+    "required": "Campo requerido"
+  },
   "createRaffle": "Crear Rifa",
   "name": "Nombre",
+  "nameHint": "Objetivo de la rifa",
   "description": "Descripción",
+  "descriptionHint": "Fecha: Junio 6, Loteria: Lot....",
   "price": "Precio",
   "prize": "Premio",
   "ticketsNumber": "Número de boletas"

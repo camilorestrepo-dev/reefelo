@@ -7,10 +7,21 @@ label.form-input {
   gap: $spacing-4;
   margin-bottom: $spacing-16;
 
+  &.input-error {
+    input {
+      border-color: $error-color;
+    }
+  }
+
   input {
     padding: $spacing-4 $spacing-8;
     font-size: large;
     border-radius: $radius-5;
     border: 1px solid $grey;
+  }
+
+  .error-message {
+    color: $error-color;
+    font-size: smaller;
   }
 }

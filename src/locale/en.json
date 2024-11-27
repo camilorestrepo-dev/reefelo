@@ -3,9 +3,14 @@
     "cancel": "Cancel",
     "save": "Save"
   },
+  "error": {
+    "required": "Required field"
+  },
   "createRaffle": "Create Raffle",
   "name": "Name",
+  "nameHint": "Goal of this raffle",
   "description": "Description",
+  "descriptionHint": "Date: June 6th, Lotto: ...",
   "price": "Price",
   "prize": "Prize",
   "ticketsNumber": "Number of tickets"

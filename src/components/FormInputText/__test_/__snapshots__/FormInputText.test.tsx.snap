@@ -17,3 +17,26 @@ exports[`reder corectly 1`] = `
   </label>
 </div>
 `;
+
+exports[`reder corectly with error 1`] = `
+<div>
+  <label
+    class="form-input input-error"
+  >
+    <span>
+      Description
+    </span>
+    <input
+      name="desc"
+      placeholder="Type description"
+      type="text"
+      value="hello"
+    />
+    <span
+      class="error-message"
+    >
+      Required field
+    </span>
+  </label>
+</div>
+`;

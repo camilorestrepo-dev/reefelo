@@ -1,4 +1,5 @@
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
+import classnames from "classnames";
 import "./FormInputText.scss";
 
 type FormInputTextProps = {
@@ -7,6 +8,7 @@ type FormInputTextProps = {
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
   defaultValue: string | number | readonly string[];
+  error?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -16,10 +18,11 @@ const FormInputText: React.FC<FormInputTextProps> = ({
   placeholder,
   type = "text",
   defaultValue,
+  error,
   onChange,
 }: FormInputTextProps) => {
   return (
-    <label className="form-input">
+    <label className={classnames("form-input", { "input-error": error })}>
       <span>{label}</span>
       <input
         type={type}
@@ -28,6 +31,7 @@ const FormInputText: React.FC<FormInputTextProps> = ({
         defaultValue={defaultValue}
         onChange={onChange}
       />
+      {error && <span className="error-message">{error}</span>}
     </label>
   );
 };
