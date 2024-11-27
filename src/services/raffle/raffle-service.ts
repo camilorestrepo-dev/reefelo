@@ -10,11 +10,14 @@ import {
   writeBatch,
   serverTimestamp,
   Timestamp,
+  getDoc,
 } from "firebase/firestore";
+import { FirebaseError } from "firebase/app";
 import { RaffleData } from "../../models/raffle";
 import { db } from "../firebase";
 import { RAFFLES, TICKETS } from "../collections";
 import { AuthService } from "../auth/auth-service";
+import { TicketData } from "../../models/ticket";
 
 export class RaffleService {
   static save = async (raffle: RaffleData) => {
@@ -70,5 +73,41 @@ export class RaffleService {
       raffles.push(raffle);
     });
     return raffles;
+  };
+
+  static loadTickets = async (raffleId: string): Promise<TicketData[]> => {
+    // Validate if user is owner of this raffle
+    try {
+      const docRef = doc(db, RAFFLES, raffleId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.data().userId !== AuthService.currentUser().uid) {
+        throw Error("unauthorized");
+      }
+
+      // Query raffle tickets
+      const q = query(collection(db, RAFFLES, raffleId, TICKETS), orderBy("id"));
+      const querySnaps = await getDocs(q);
+      const tickets: TicketData[] = [];
+      querySnaps.forEach((snap) => {
+        const data = snap.data();
+        const ticket: TicketData = {
+          id: data.id,
+          enabled: data.enabled,
+          payed: data.payed,
+        };
+        tickets.push(ticket);
+      });
+      return tickets;
+    } catch (e) {
+      console.error(e);
+      if (e instanceof FirebaseError) {
+        const error = e as FirebaseError;
+        if (error.code === "permission-denied") {
+          throw Error("unauthorized");
+        }
+      }
+      throw e;
+    }
   };
 }

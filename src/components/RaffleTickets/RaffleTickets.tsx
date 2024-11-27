@@ -1,16 +1,11 @@
 import "./RaffleTickets.scss";
 import classnames from "classnames";
-
-type RaffleTicket = {
-  id: string;
-  enabled: boolean;
-  payed: boolean;
-};
+import { TicketData } from "../../models/ticket";
 
 type OnTicketPressed = (id: string) => void;
 
 type RaffleTicketsProps = {
-  tickets: Array<RaffleTicket>;
+  tickets: Array<TicketData>;
   onTicketPressed: OnTicketPressed;
 };
 
@@ -19,7 +14,7 @@ const RaffleTickets: React.FC<RaffleTicketsProps> = ({
   onTicketPressed,
 }: RaffleTicketsProps) => {
   return (
-    <div className="raffle-tickets-container">
+    <div className={classnames("raffle-tickets-container", { "small-view": tickets.length == 10 })}>
       {tickets.map((ticket) => {
         const { id, enabled, payed } = ticket;
         return (

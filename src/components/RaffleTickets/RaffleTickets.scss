@@ -47,3 +47,27 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .raffle-tickets-container {
+    &.small-view {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .raffle-tickets-container {
+    .raffle-ticket-card {
+      font-size: medium;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .raffle-tickets-container {
+    .raffle-ticket-card {
+      font-size: large;
+    }
+  }
+}
