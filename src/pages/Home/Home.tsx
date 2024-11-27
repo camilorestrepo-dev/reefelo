@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const navigateToNewRaffle = () => {
-    return navigate("/raffle/create");
+    navigate("/raffle/create");
   };
 
   return (
