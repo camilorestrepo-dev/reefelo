@@ -8,6 +8,11 @@
     "required": "Campo requerido",
     "signUp": "Error en el registro. Intenta mas tarde o usando otra cuenta."
   },
+  "emptyState": {
+    "title": "Nada por aquí",
+    "subtitle": "No hay nada para mostrar en este momento."
+  },
+  "tryAgain": "Volver a cargar",
   "createRaffle": "Crear Rifa",
   "raffles": "Mis Rifas",
   "name": "Nombre",

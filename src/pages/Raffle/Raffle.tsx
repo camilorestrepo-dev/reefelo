@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MainContainer from "../../components/MainContainer/MainContainer";
 import RaffleTickets from "../../components/RaffleTickets/RaffleTickets";
-import { useEffect, useState } from "react";
 import { TicketData } from "../../models/ticket";
 import { RaffleService } from "../../services/raffle/raffle-service";
+import EmptyState from "../../components/EmptyState/EmptyState";
 
 const Raffle: React.FC = () => {
   const [tickets, setTickets] = useState<TicketData[]>();
@@ -31,6 +32,7 @@ const Raffle: React.FC = () => {
         {tickets && tickets.length && (
           <RaffleTickets tickets={tickets} onTicketPressed={onTicketPressed} />
         )}
+        {tickets && tickets.length == 0 && <EmptyState />}
       </section>
     </MainContainer>
   );

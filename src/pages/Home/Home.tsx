@@ -7,6 +7,7 @@ import MainContainer from "../../components/MainContainer/MainContainer";
 import { RaffleService } from "../../services/raffle/raffle-service";
 import { RaffleData } from "../../models/raffle";
 import RaffleCard from "../../components/RaffleCard/RaffleCard";
+import EmptyState from "../../components/EmptyState/EmptyState";
 
 const Home: React.FC = () => {
   const [raffles, setRaffles] = useState<RaffleData[]>();
@@ -44,6 +45,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         )}
+        {raffles && raffles.length == 0 && <EmptyState />}
       </section>
     </MainContainer>
   );

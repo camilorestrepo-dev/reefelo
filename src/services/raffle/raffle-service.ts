@@ -76,11 +76,10 @@ export class RaffleService {
   };
 
   static loadTickets = async (raffleId: string): Promise<TicketData[]> => {
-    // Validate if user is owner of this raffle
     try {
+      // Validate if user is owner of this raffle
       const docRef = doc(db, RAFFLES, raffleId);
       const docSnap = await getDoc(docRef);
-
       if (docSnap.data().userId !== AuthService.currentUser().uid) {
         throw Error("unauthorized");
       }

@@ -8,6 +8,11 @@
     "required": "Required field",
     "signUp": "Error signing in. Please try later or using other account."
   },
+  "emptyState": {
+    "title": "It's Empty Here",
+    "subtitle": "There's nothing to display right now."
+  },
+  "tryAgain": "Reload",
   "createRaffle": "Create Raffle",
   "raffles": "My Raffles",
   "name": "Name",
