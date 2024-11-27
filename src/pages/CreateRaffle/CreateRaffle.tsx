@@ -139,7 +139,7 @@ const CreateRaffle: React.FC = () => {
               variant="outline"
               disabled={loading}
               onClick={() => {
-                navigate("/");
+                navigate(-1);
               }}
             >
               {t("actions.cancel")}

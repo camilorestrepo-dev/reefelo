@@ -5,7 +5,8 @@
   },
   "error": {
     "generic": "Tenemos un error. Intenta mas tarde.",
-    "required": "Campo requerido"
+    "required": "Campo requerido",
+    "signUp": "Error en el registro. Intenta mas tarde o usando otra cuenta."
   },
   "createRaffle": "Crear Rifa",
   "name": "Nombre",
@@ -14,5 +15,9 @@
   "descriptionHint": "Fecha: Junio 6, Loteria: Lot....",
   "price": "Precio",
   "prize": "Premio",
-  "ticketsNumber": "Número de boletas"
+  "ticketsNumber": "Número de boletas",
+  "manageTitle": "Administra tus Rifas",
+  "signIn": "Iniciar Sesión",
+  "continueWithGoogle": "Continuar con Google",
+  "signOut": "Cerrar Sesión"
 }

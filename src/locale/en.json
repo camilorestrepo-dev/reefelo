@@ -5,7 +5,8 @@
   },
   "error": {
     "generic": "There is an error. Try again later.",
-    "required": "Required field"
+    "required": "Required field",
+    "signUp": "Error signing in. Please try later or using other account."
   },
   "createRaffle": "Create Raffle",
   "name": "Name",
@@ -14,5 +15,9 @@
   "descriptionHint": "Date: June 6th, Lotto: ...",
   "price": "Price",
   "prize": "Prize",
-  "ticketsNumber": "Number of tickets"
+  "ticketsNumber": "Number of tickets",
+  "manageTitle": "Manage your Raffles",
+  "signIn": "Sign In",
+  "continueWithGoogle": "Continue with Google",
+  "signOut": "Sign Out"
 }
