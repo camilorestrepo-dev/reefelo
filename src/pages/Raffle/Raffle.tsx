@@ -12,30 +12,36 @@ import { RaffleData } from "../../models/raffle";
 import Icon from "../../components/Icon/Icon";
 import Modal from "../../components/Modal/Modal";
 import TicketForm from "../../components/TicketForm/TicketForm";
+import ErrorModal from "../../components/Modal/ErrorModal";
+import Loading from "../../components/Loading/Loading";
 
 const Raffle: React.FC = () => {
   const [tickets, setTickets] = useState<TicketData[]>();
   const [raffle, setRaffle] = useState<RaffleData>();
   const [openTicketForm, setOpenTicketForm] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<TicketData>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { raffleId } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const loadTickets = useCallback(() => {
-    RaffleService.loadTickets(raffleId)
-      .then(setTickets)
-      .catch((error) => {
-        console.error(error);
-      });
+  const loadTickets = useCallback(async () => {
+    try {
+      const tickets = await RaffleService.loadTickets(raffleId);
+      setTickets(tickets);
+    } catch (error) {
+      console.error(error);
+    }
   }, [raffleId, setTickets]);
 
-  const loadRaffle = useCallback(() => {
-    RaffleService.loadRaffle(raffleId)
-      .then(setRaffle)
-      .catch((error) => {
-        console.error(error);
-      });
+  const loadRaffle = useCallback(async () => {
+    try {
+      const raffle = await RaffleService.loadRaffle(raffleId);
+      setRaffle(raffle);
+    } catch (error) {
+      console.error(error);
+    }
   }, [raffleId, setRaffle]);
 
   useEffect(() => {
@@ -53,8 +59,21 @@ const Raffle: React.FC = () => {
     setOpenTicketForm(false);
   };
 
+  const closeErrorModal = () => {
+    setError("");
+  };
+
   const saveTicket = async (updatedTicket: TicketData) => {
-    console.log(updatedTicket);
+    setLoading(true);
+    try {
+      await RaffleService.saveTicket(raffleId, { ...updatedTicket });
+      await loadTickets();
+      closeTicketForm();
+    } catch (e) {
+      console.error(e);
+      setError("error.generic");
+    }
+    setLoading(false);
   };
 
   return (
@@ -93,6 +112,8 @@ const Raffle: React.FC = () => {
           onCloseForm={closeTicketForm}
         />
       </Modal>
+      <ErrorModal errorMessage={t(error)} isOpen={!!error} onClose={closeErrorModal}></ErrorModal>
+      <Loading isOpen={loading} />
     </MainContainer>
   );
 };

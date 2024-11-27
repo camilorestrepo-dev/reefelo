@@ -11,6 +11,7 @@ import {
   serverTimestamp,
   Timestamp,
   getDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { FirebaseError } from "firebase/app";
 import { RaffleData } from "../../models/raffle";
@@ -117,10 +118,42 @@ export class RaffleService {
           id: data.id,
           reserved: data.reserved,
           payed: data.payed,
+          clientName: data.clientName,
+          clientPhone: data.clientPhone,
         };
         tickets.push(ticket);
       });
       return tickets;
+    } catch (e) {
+      console.error(e);
+      if (e instanceof FirebaseError) {
+        const error = e as FirebaseError;
+        if (error.code === "permission-denied") {
+          throw Error("unauthorized");
+        }
+      }
+      throw e;
+    }
+  };
+
+  static saveTicket = async (raffleId: string, ticket: TicketData): Promise<TicketData> => {
+    try {
+      // Validate if user is owner of this raffle
+      const raffleRef = doc(db, RAFFLES, raffleId);
+      const raffleSnap = await getDoc(raffleRef);
+      if (raffleSnap.data().userId !== AuthService.currentUser().uid) {
+        throw Error("unauthorized");
+      }
+
+      await updateDoc(doc(db, RAFFLES, raffleId, TICKETS, ticket.id), {
+        reserved: ticket.reserved,
+        payed: ticket.payed,
+        clientName: ticket.clientName,
+        clientPhone: ticket.clientPhone,
+        updatedAt: serverTimestamp(),
+      });
+
+      return ticket;
     } catch (e) {
       console.error(e);
       if (e instanceof FirebaseError) {
