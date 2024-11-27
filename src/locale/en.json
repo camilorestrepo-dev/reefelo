@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "createRaffle": "Create Raffle",
+  "name": "Name",
+  "description": "Description",
+  "price": "Price",
+  "prize": "Prize",
+  "ticketsNumber": "Number of tickets"
+}

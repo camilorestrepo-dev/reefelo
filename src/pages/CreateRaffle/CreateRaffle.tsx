@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import MainContainer from "../../components/MainContainer/MainContainer";
 import "./CreateRaffle.scss";
 import Button from "../../components/Button/Button";
@@ -13,6 +14,7 @@ const CreateRaffle: React.FC = () => {
     ticketsNumber: 10,
   });
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onChangeData: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewRaffle((oldValue) => ({
@@ -29,40 +31,40 @@ const CreateRaffle: React.FC = () => {
   return (
     <MainContainer>
       <section className="create-raffle-container">
-        <h2>Create Raffle</h2>
+        <h2>{t("createRaffle")}</h2>
         <form onSubmit={saveRaffle}>
           <label>
-            <span>Name</span>
+            <span>{t("name")}</span>
             <input
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder={t("name")}
               defaultValue={newRaffle.name}
               onChange={onChangeData}
             />
           </label>
           <label>
-            <span>Prize</span>
+            <span>{t("prize")}</span>
             <input
               type="text"
-              name="prizze"
-              placeholder="Prize"
+              name="prize"
+              placeholder={t("prize")}
               defaultValue={newRaffle.prize}
               onChange={onChangeData}
             />
           </label>
           <label>
-            <span>Description</span>
+            <span>{t("description")}</span>
             <input
               type="text"
               name="description"
-              placeholder="Description"
+              placeholder={t("description")}
               defaultValue={newRaffle.description}
               onChange={onChangeData}
             />
           </label>
           <label>
-            <span>Price</span>
+            <span>{t("price")}</span>
             <input
               type="number"
               name="price"
@@ -72,24 +74,24 @@ const CreateRaffle: React.FC = () => {
             />
           </label>
           <label>
-            <span>Tickets</span>
+            <span>{t("ticketsNumber")}</span>
             <input
               type="number"
               name="tickets"
-              placeholder="Thiceks"
+              placeholder={t("ticketsNumber")}
               defaultValue={newRaffle.ticketsNumber}
               onChange={onChangeData}
             />
           </label>
           <div className="buttons-section">
             <Button
-              label="Cancel"
+              label={t("actions.cancel")}
               variant="outline"
               onClick={() => {
                 navigate("/");
               }}
             />
-            <Button label="Save" type="submit" variant="solid" />
+            <Button label={t("actions.save")} type="submit" variant="solid" />
           </div>
         </form>
       </section>

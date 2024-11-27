@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "cancel": "Cancelar",
+    "save": "Guardar"
+  },
+  "createRaffle": "Crear Rifa",
+  "name": "Nombre",
+  "description": "Descripción",
+  "price": "Precio",
+  "prize": "Premio",
+  "ticketsNumber": "Número de boletas"
+}
