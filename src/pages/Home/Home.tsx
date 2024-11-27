@@ -1,9 +1,20 @@
+import Button from "../../components/Button/Button";
+import MainContainer from "../../components/MainContainer/MainContainer";
+import { useNavigate } from "react-router-dom";
+
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+  const navigateToNewRaffle = () => {
+    return navigate("/raffle/create");
+  };
+
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Home View</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-    </div>
+    <MainContainer>
+      <section>
+        <h2>My Raffles</h2>
+        <Button label="New Raffle" variant="solid" onClick={navigateToNewRaffle} />
+      </section>
+    </MainContainer>
   );
 };
 

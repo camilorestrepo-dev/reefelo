@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.custom-btn {
+  border: none;
+  border-radius: $radius-5;
+  font-size: medium;
+  font-weight: bold;
+  padding: $spacing-8 $spacing-12;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.solid-btn {
+    color: $textColor;
+    background-color: $primary;
+  }
+
+  &.outline-btn {
+    color: $primary;
+    background-color: $white;
+    border: 1px solid $primary;
+  }
+
+  &.link-btn {
+    color: $primary;
+    background-color: $white;
+    border: none;
+  }
+}

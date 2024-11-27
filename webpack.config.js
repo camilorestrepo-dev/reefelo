@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const DotenvPlugin = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -9,6 +10,9 @@ module.exports = {
     publicPath: "/",
   },
   plugins: [
+    new DotenvPlugin({
+      path: "./.env",
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
