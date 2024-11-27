@@ -9,7 +9,7 @@ import "./SignIn.scss";
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();
-  const { signInLoading: loading, signInError, clearSignInError, login, logout } = useAuth();
+  const { signInLoading: loading, signInError, clearSignInError, login } = useAuth();
 
   const closeErrorModal = () => {
     clearSignInError();
@@ -22,9 +22,6 @@ const SignIn: React.FC = () => {
         <h2>{t("signIn")}</h2>
         <Button variant="solid" onClick={login}>
           {t("continueWithGoogle")}
-        </Button>
-        <Button variant="outline" onClick={logout}>
-          {t("signOut")}
         </Button>
       </section>
       <Loading isOpen={loading} />

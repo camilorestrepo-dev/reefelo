@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div>
+  <header
+    class="navbar"
+  >
+    <nav
+      class="navbar-container"
+    >
+      <a
+        class="navbar-logo"
+        href="/home"
+      >
+        Reefelo
+      </a>
+      <ul
+        class="navbar-links"
+      >
+        <li>
+          <button
+            class="custom-btn outline-btn logout-btn"
+            type="button"
+          >
+            Sign Out
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+`;

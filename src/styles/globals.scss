@@ -8,3 +8,8 @@ body {
 * {
   font-family: $font-family-base, "Helvetica Neue", sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,38 @@
+@import "../../styles/shared.scss";
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: $primary;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-12 $spacing-16;
+    max-width: $max-page-width;
+    margin: 0 auto;
+
+    .navbar-logo {
+      font-size: 1.5rem;
+    }
+
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+
+      .logout-btn {
+        font-weight: normal;
+        color: $text-color;
+        border-color: $text-color;
+      }
+    }
+  }
+}
