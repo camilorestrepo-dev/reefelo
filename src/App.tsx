@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/raffle" element={<Raffle />} />
+        <Route path="/raffle/:raffleId" element={<Raffle />} />
         <Route path="/raffle/create" element={<CreateRaffle />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="*" element={<NotFound />} />

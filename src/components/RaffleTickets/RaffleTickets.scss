@@ -1,0 +1,48 @@
+@import "../../styles/shared.scss";
+
+.raffle-tickets-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: $spacing-8;
+
+  .raffle-ticket-card {
+    border: 1px solid $grey;
+    border-radius: $radius-5;
+    aspect-ratio: 1;
+    font-size: x-small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $enabled-ticket;
+    padding: 0;
+
+    &.disabled-ticket {
+      position: relative;
+      background: $disabled-ticket;
+
+      &.payed-ticket {
+        &::before {
+          content: '';
+          width: 2px;
+          height: 100%;
+          background: $textColor;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &::after {
+          content: '';
+          width: 2px;
+          height: 100%;
+          background: $textColor;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+      }
+    }
+  }
+}
