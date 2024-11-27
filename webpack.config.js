@@ -14,17 +14,28 @@ module.exports = {
   ],
   module: {
     rules: [
-      // `js` and `jsx` files are parsed using `babel`
-      // exclude node_modules
       {
+        // `js` and `jsx` files are parsed using `babel`
+        // exclude node_modules
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
-      // `ts` and `tsx` files are parsed using `ts-loader`
       {
+        // `ts` and `tsx` files are parsed using `ts-loader`
         test: /\.(ts|tsx)$/,
         loader: "ts-loader",
+      },
+      {
+        // styles files
+        test: /\.(sa|sc|c)ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        // to import images and fonts
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader",
+        options: { limit: false },
       },
     ],
   },
