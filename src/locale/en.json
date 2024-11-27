@@ -19,5 +19,8 @@
   "manageTitle": "Manage your Raffles",
   "signIn": "Sign In",
   "continueWithGoogle": "Continue with Google",
-  "signOut": "Sign Out"
+  "signOut": "Sign Out",
+  "notFound": "Page Not Found",
+  "notFoundMessage": "Sorry, the page you are looking for does not exist.",
+  "goHome": "Go to Home"
 }

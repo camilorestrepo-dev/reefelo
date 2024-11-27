@@ -1,7 +1,7 @@
+import "./InlineSelect.scss";
 import { useState } from "react";
 import classnames from "classnames";
 import Button from "../Button/Button";
-import "./InlineSelect.scss";
 
 type InlineOption = {
   label: string;

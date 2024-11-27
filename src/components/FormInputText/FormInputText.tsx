@@ -1,6 +1,6 @@
+import "./FormInputText.scss";
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import classnames from "classnames";
-import "./FormInputText.scss";
 
 type FormInputTextProps = {
   label: string;

@@ -1,0 +1,40 @@
+@import "../../styles/shared.scss";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .illustration {
+    margin-bottom: $spacing-32;
+
+    svg {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .home-link {
+    font-size: 1.25rem;
+    color: $primary;
+    text-decoration: none;
+    padding: $spacing-8 $spacing-16;
+    border-radius: $radius-5;
+  }
+
+  .home-link:hover {
+    text-decoration: underline;
+  }
+}

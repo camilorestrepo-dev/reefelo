@@ -1,11 +1,10 @@
+import "./SignIn.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../../components/Button/Button";
 import MainContainer from "../../components/MainContainer/MainContainer";
 import { useAuth } from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
 import ErrorModal from "../../components/Modal/ErrorModal";
-
-import "./SignIn.scss";
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation();

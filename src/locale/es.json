@@ -19,5 +19,8 @@
   "manageTitle": "Administra tus Rifas",
   "signIn": "Iniciar Sesión",
   "continueWithGoogle": "Continuar con Google",
-  "signOut": "Cerrar Sesión"
+  "signOut": "Cerrar Sesión",
+  "notFound": "Página No Encontrada",
+  "notFoundMessage": "La página que estás buscando no existe.",
+  "goHome": "Ir al Inicio"
 }

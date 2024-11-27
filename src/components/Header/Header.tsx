@@ -1,9 +1,8 @@
+import "./Header.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
 import { useAuth } from "../../hooks/useAuth";
 import { NavLink } from "react-router-dom";
-
-import "./Header.scss";
 
 const Header: React.FC = () => {
   const { t } = useTranslation();

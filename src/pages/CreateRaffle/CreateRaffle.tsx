@@ -1,3 +1,4 @@
+import "./CreateRaffle.scss";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import MainContainer from "../../components/MainContainer/MainContainer";
@@ -9,8 +10,6 @@ import { RaffleService } from "../../services/raffle/raffle-service";
 import Loading from "../../components/Loading/Loading";
 import ErrorModal from "../../components/Modal/ErrorModal";
 import InlineSelect from "../../components/InlineSelect/InlineSelect";
-
-import "./CreateRaffle.scss";
 
 type RaffleFormErrors = {
   name?: string;

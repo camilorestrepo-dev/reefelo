@@ -1,5 +1,5 @@
-import classnames from "classnames";
 import "./RaffleTickets.scss";
+import classnames from "classnames";
 
 type RaffleTicket = {
   id: string;

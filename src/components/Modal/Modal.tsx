@@ -1,5 +1,5 @@
-import { createPortal } from "react-dom";
 import "./Modal.scss";
+import { createPortal } from "react-dom";
 
 export interface ModalProps extends React.PropsWithChildren {
   isOpen: boolean;

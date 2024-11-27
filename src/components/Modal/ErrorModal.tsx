@@ -1,7 +1,7 @@
+import "./ErrorModal.scss";
 import Icon from "../Icon/Icon";
 import Modal, { ModalProps } from "./Modal";
 import Button from "../Button/Button";
-import "./ErrorModal.scss";
 
 interface ErrorModalProps extends Pick<ModalProps, "isOpen" | "onClose"> {
   errorMessage: string;
