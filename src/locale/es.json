@@ -6,6 +6,7 @@
   },
   "error": {
     "generic": "Tenemos un error. Intenta mas tarde.",
+    "maxRafflesPerUserExceeded": "Has superado el número máximo de sorteos activos. Elimina uno y vuelve a intentarlo.",
     "required": "Campo requerido",
     "signUp": "Error en el registro. Intenta mas tarde o usando otra cuenta."
   },

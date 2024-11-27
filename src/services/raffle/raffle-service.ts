@@ -13,15 +13,24 @@ import {
   getDoc,
   updateDoc,
 } from "firebase/firestore";
+import { getNumber } from "firebase/remote-config";
 import { FirebaseError } from "firebase/app";
 import { RaffleData } from "../../models/raffle";
-import { db } from "../firebase";
+import { db, remoteConfig } from "../firebase";
 import { RAFFLES, TICKETS } from "../collections";
 import { AuthService } from "../auth/auth-service";
 import { TicketData } from "../../models/ticket";
 
 export class RaffleService {
-  static save = async (raffle: RaffleData) => {
+  static saveRaffle = async (raffle: RaffleData) => {
+    // Validate de max number of active raffles per user
+    const maxRaffles = getNumber(remoteConfig, "maxRafflesPerUser");
+    const q = query(collection(db, RAFFLES), where("userId", "==", AuthService.currentUser().uid));
+    const querySnaps = await getDocs(q);
+    if (querySnaps.size >= maxRaffles) {
+      throw Error("maxRafflesPerUserExceeded");
+    }
+
     let tickets = raffle.tickets;
     if (!tickets) {
       const digits = Math.log10(raffle.ticketsNumber);

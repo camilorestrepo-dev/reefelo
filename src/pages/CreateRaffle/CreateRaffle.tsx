@@ -63,13 +63,18 @@ const CreateRaffle: React.FC = () => {
     if (validateForm()) {
       setLoading(true);
       try {
-        await RaffleService.save({ ...newRaffle });
+        await RaffleService.saveRaffle({ ...newRaffle });
         navigate("/home");
       } catch (e) {
+        if (e instanceof Error && e.message === "maxRafflesPerUserExceeded") {
+          setError(`error.${e.message}`);
+          return;
+        }
         console.error(e);
         setError("error.generic");
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
   };
 

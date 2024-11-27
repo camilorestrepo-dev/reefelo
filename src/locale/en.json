@@ -6,6 +6,7 @@
   },
   "error": {
     "generic": "There is an error. Try again later.",
+    "maxRafflesPerUserExceeded": "You have exceeded the maximum number of active raffles. Please delete one and try again.",
     "required": "Required field",
     "signUp": "Error signing in. Please try later or using other account."
   },
