@@ -6,5 +6,9 @@
   "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
   "moduleNameMapper": {
     "\\.(css|sass|scss)$": "identity-obj-proxy"
+  },
+  "transform": {
+    "\\.[jt]sx?$": "babel-jest",
+    "^.+\\.svg$": "jest-transformer-svg"
   }
 }

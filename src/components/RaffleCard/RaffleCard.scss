@@ -1,0 +1,43 @@
+@import "../../styles/shared.scss";
+
+.raffle-card-container {
+  border: 1px solid $grey;
+  border-radius: $radius-10;
+  padding: $spacing-8;
+  max-width: 300px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+
+  .top-side {
+    width: 100%;
+
+    h4 {
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: $spacing-4;
+      text-overflow: ellipsis;
+      text-wrap: nowrap;
+      overflow: hidden;
+    }
+
+    p {
+      margin: 0;
+      text-overflow: ellipsis;
+      text-wrap: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  .bottom-side {
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: $spacing-8;
+      font-size: small;
+    }
+  }
+}

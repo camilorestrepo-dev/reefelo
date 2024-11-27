@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reder corectly 1`] = `
+<div>
+  <div
+    class="raffle-card-container"
+  >
+    <div
+      class="top-side"
+    >
+      <h4>
+        Rifa 2Motos
+      </h4>
+      <p>
+        Juega 25/07/25, Lote Caldas
+      </p>
+    </div>
+    <div
+      class="bottom-side"
+    >
+      <div
+        class="info-row"
+      >
+        <img
+          class="icon-ticket"
+          height="20"
+          src="function SvgTicket(props) {
+  return React.createElement(
+    'svg', 
+    Object.assign({}, props, {'data-file-name': SvgTicket.name})
+  );
+}"
+          width="20"
+        />
+        100
+      </div>
+      <div
+        class="info-row"
+      >
+        <img
+          class="icon-price"
+          height="20"
+          src="function SvgPrice(props) {
+  return React.createElement(
+    'svg', 
+    Object.assign({}, props, {'data-file-name': SvgPrice.name})
+  );
+}"
+          width="20"
+        />
+        $
+        500
+      </div>
+      <div
+        class="info-row"
+      >
+        <img
+          class="icon-prize"
+          height="20"
+          src="function SvgPrize(props) {
+  return React.createElement(
+    'svg', 
+    Object.assign({}, props, {'data-file-name': SvgPrize.name})
+  );
+}"
+          width="20"
+        />
+        1000
+      </div>
+    </div>
+  </div>
+</div>
+`;

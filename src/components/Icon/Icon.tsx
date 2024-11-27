@@ -1,13 +1,19 @@
-import error from "../../assets/icons/error.svg";
 import close from "../../assets/icons/close.svg";
+import error from "../../assets/icons/error.svg";
+import price from "../../assets/icons/price.svg";
+import prize from "../../assets/icons/prize.svg";
+import ticket from "../../assets/icons/ticket.svg";
 
 const ICONS = {
-  error,
   close,
+  error,
+  price,
+  prize,
+  ticket,
 };
 
 interface IconProps {
-  icon: "error" | "close";
+  icon: "close" | "error" | "price" | "prize" | "ticket";
   size?: number;
 }
 
