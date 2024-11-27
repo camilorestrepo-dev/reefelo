@@ -12,6 +12,7 @@ import {
   Timestamp,
   getDoc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { getNumber } from "firebase/remote-config";
 import { FirebaseError } from "firebase/app";
@@ -20,15 +21,16 @@ import { db, remoteConfig } from "../firebase";
 import { RAFFLES, TICKETS } from "../collections";
 import { AuthService } from "../auth/auth-service";
 import { TicketData } from "../../models/ticket";
+import { RaffleError } from "../raffle-error";
 
 export class RaffleService {
   static saveRaffle = async (raffle: RaffleData) => {
     // Validate de max number of active raffles per user
     const maxRaffles = getNumber(remoteConfig, "maxRafflesPerUser");
-    const q = query(collection(db, RAFFLES), where("userId", "==", AuthService.currentUser().uid));
+    const q = query(collection(db, RAFFLES), where("userId", "==", AuthService.currentUser()?.uid));
     const querySnaps = await getDocs(q);
     if (querySnaps.size >= maxRaffles) {
-      throw Error("maxRafflesPerUserExceeded");
+      throw new RaffleError("maxRafflesPerUserExceeded");
     }
 
     let tickets = raffle.tickets;
@@ -44,7 +46,7 @@ export class RaffleService {
     }
     const newRaffle = {
       ...raffle,
-      userId: AuthService.currentUser().uid,
+      userId: AuthService.currentUser()?.uid,
       createdAt: serverTimestamp(),
     };
     const createdDoc = await addDoc(collection(db, RAFFLES), newRaffle);
@@ -62,7 +64,7 @@ export class RaffleService {
   static loadRaffles = async (limited: number): Promise<RaffleData[]> => {
     const q = query(
       collection(db, RAFFLES),
-      where("userId", "==", AuthService.currentUser().uid),
+      where("userId", "==", AuthService.currentUser()?.uid),
       orderBy("createdAt", "desc"),
       limit(limited),
     );
@@ -89,8 +91,8 @@ export class RaffleService {
     // Validate if user is owner of this raffle
     const docRef = doc(db, RAFFLES, raffleId);
     const docSnap = await getDoc(docRef);
-    if (docSnap.data().userId !== AuthService.currentUser().uid) {
-      throw Error("unauthorized");
+    if (docSnap.data().userId !== AuthService.currentUser()?.uid) {
+      throw new RaffleError("unauthorized");
     }
 
     const data = docSnap.data();
@@ -108,13 +110,43 @@ export class RaffleService {
     return raffle;
   };
 
+  static updateRaffle = async (raffle: RaffleData) => {
+    // Validate if user is owner of this raffle
+    const docRef = doc(db, RAFFLES, raffle.id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.data().userId !== AuthService.currentUser()?.uid) {
+      throw new RaffleError("unauthorized");
+    }
+
+    const newData: Partial<Pick<RaffleData, "name" | "description" | "price" | "prize">> = {
+      description: raffle.description,
+      name: raffle.name,
+      price: raffle.price,
+      prize: raffle.prize,
+    };
+    await updateDoc(docRef, newData);
+
+    return newData;
+  };
+
+  static deleteRaffle = async (raffleId: string) => {
+    // Validate if user is owner of this raffle
+    const docRef = doc(db, RAFFLES, raffleId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.data().userId !== AuthService.currentUser()?.uid) {
+      throw new RaffleError("unauthorized");
+    }
+
+    await deleteDoc(docRef);
+  };
+
   static loadTickets = async (raffleId: string): Promise<TicketData[]> => {
     try {
       // Validate if user is owner of this raffle
       const docRef = doc(db, RAFFLES, raffleId);
       const docSnap = await getDoc(docRef);
-      if (docSnap.data().userId !== AuthService.currentUser().uid) {
-        throw Error("unauthorized");
+      if (docSnap.data().userId !== AuthService.currentUser()?.uid) {
+        throw new RaffleError("unauthorized");
       }
 
       // Query raffle tickets
@@ -136,9 +168,8 @@ export class RaffleService {
     } catch (e) {
       console.error(e);
       if (e instanceof FirebaseError) {
-        const error = e as FirebaseError;
-        if (error.code === "permission-denied") {
-          throw Error("unauthorized");
+        if (e.code === "permission-denied") {
+          throw new RaffleError("unauthorized");
         }
       }
       throw e;
@@ -150,8 +181,8 @@ export class RaffleService {
       // Validate if user is owner of this raffle
       const raffleRef = doc(db, RAFFLES, raffleId);
       const raffleSnap = await getDoc(raffleRef);
-      if (raffleSnap.data().userId !== AuthService.currentUser().uid) {
-        throw Error("unauthorized");
+      if (raffleSnap.data().userId !== AuthService.currentUser()?.uid) {
+        throw new RaffleError("unauthorized");
       }
 
       await updateDoc(doc(db, RAFFLES, raffleId, TICKETS, ticket.id), {
@@ -166,9 +197,8 @@ export class RaffleService {
     } catch (e) {
       console.error(e);
       if (e instanceof FirebaseError) {
-        const error = e as FirebaseError;
-        if (error.code === "permission-denied") {
-          throw Error("unauthorized");
+        if (e.code === "permission-denied") {
+          throw new RaffleError("unauthorized");
         }
       }
       throw e;

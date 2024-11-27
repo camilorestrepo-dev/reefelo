@@ -1,4 +1,4 @@
-import { signInWithPopup, signOut, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, signOut, GoogleAuthProvider, User } from "firebase/auth";
 import { auth } from "../firebase";
 
 export class AuthService {
@@ -13,9 +13,9 @@ export class AuthService {
     await signOut(auth);
   };
 
-  static currentUser = () => auth.currentUser;
+  static currentUser = (): User | null => auth.currentUser;
 
-  static getUser = async () => {
+  static getUser = async (): Promise<User | null> => {
     await auth.authStateReady();
     return this.currentUser();
   };

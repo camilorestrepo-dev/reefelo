@@ -11,6 +11,7 @@ import Loading from "../../components/Loading/Loading";
 import ErrorModal from "../../components/Modal/ErrorModal";
 import InlineSelect from "../../components/InlineSelect/InlineSelect";
 import { useInputChangeHandler } from "../../hooks/useInputChangeHandler";
+import { RaffleError } from "../../services/raffle-error";
 
 type RaffleFormErrors = {
   name?: string;
@@ -66,7 +67,7 @@ const CreateRaffle: React.FC = () => {
         await RaffleService.saveRaffle({ ...newRaffle });
         navigate("/home");
       } catch (e) {
-        if (e instanceof Error && e.message === "maxRafflesPerUserExceeded") {
+        if (e instanceof RaffleError) {
           setError(`error.${e.message}`);
           return;
         }
