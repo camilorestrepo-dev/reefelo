@@ -1,0 +1,32 @@
+@import "../../styles/shared.scss";
+
+.raffle-info-section {
+  margin-bottom: $spacing-20;
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    font-size: medium;
+  }
+}
+
+.raffle-bottom-section {
+  margin-top: $spacing-20;
+  display: flex;
+  justify-content: center;
+}
+
+.update-ticket-section {
+  width: 80vw;
+  max-width: 500px;
+  max-height: 600px;
+  overflow-y: auto;
+
+  .buttons-section {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: $spacing-16;
+  }
+}

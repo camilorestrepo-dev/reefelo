@@ -28,7 +28,7 @@ export class RaffleService {
         .fill(null)
         .map((_, index) => ({
           id: String(index).padStart(digits, "0"),
-          enabled: true,
+          reserved: false,
           payed: false,
         }));
     }
@@ -75,6 +75,29 @@ export class RaffleService {
     return raffles;
   };
 
+  static loadRaffle = async (raffleId: string): Promise<RaffleData> => {
+    // Validate if user is owner of this raffle
+    const docRef = doc(db, RAFFLES, raffleId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.data().userId !== AuthService.currentUser().uid) {
+      throw Error("unauthorized");
+    }
+
+    const data = docSnap.data();
+    const raffle: RaffleData = {
+      name: data.name,
+      description: data.description,
+      price: data.price,
+      prize: data.prize,
+      ticketsNumber: data.ticketsNumber,
+      id: docSnap.id,
+      userId: data.userId,
+      createdAt: (data.createdAt as Timestamp).toDate(),
+    };
+
+    return raffle;
+  };
+
   static loadTickets = async (raffleId: string): Promise<TicketData[]> => {
     try {
       // Validate if user is owner of this raffle
@@ -92,7 +115,7 @@ export class RaffleService {
         const data = snap.data();
         const ticket: TicketData = {
           id: data.id,
-          enabled: data.enabled,
+          reserved: data.reserved,
           payed: data.payed,
         };
         tickets.push(ticket);

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reder corectly 1`] = `
+<div>
+  <label
+    class="form-input-checkbox"
+  >
+    <div>
+      <input
+        checked=""
+        name="desc"
+        type="checkbox"
+      />
+      <span>
+        Description
+      </span>
+    </div>
+  </label>
+</div>
+`;
+
+exports[`reder corectly with error 1`] = `
+<div>
+  <label
+    class="form-input-checkbox input-error"
+  >
+    <div>
+      <input
+        name="desc"
+        type="checkbox"
+      />
+      <span>
+        Description
+      </span>
+    </div>
+    <span
+      class="error-message"
+    >
+      Required field
+    </span>
+  </label>
+</div>
+`;

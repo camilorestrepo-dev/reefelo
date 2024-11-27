@@ -1,5 +1,6 @@
 {
   "actions": {
+    "back": "Back",
     "cancel": "Cancel",
     "save": "Save"
   },
@@ -23,6 +24,12 @@
   "prize": "Prize",
   "ticketsNumber": "Number of tickets",
   "manageTitle": "Manage your Raffles",
+  "editTicket": "Edit Ticket",
+  "clientName": "Name",
+  "clientPhone": "Phone",
+  "clientNameHint": "John Smith",
+  "payed": "Payed",
+  "reservedTicket": "Reserved Ticket",
   "signIn": "Sign In",
   "continueWithGoogle": "Continue with Google",
   "signOut": "Sign Out",

@@ -1,502 +1,502 @@
 [
   {
     "id": "00",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "01",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "02",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "03",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "04",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "05",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "06",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "07",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "08",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "09",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "10",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "11",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "12",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "13",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "14",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "15",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "16",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "17",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "18",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "19",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "20",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "21",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "22",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "23",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "24",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "25",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "26",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "27",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "28",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "29",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "30",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "31",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "32",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "33",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "34",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "35",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "36",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "37",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "38",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "39",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "40",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "41",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "42",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "43",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "44",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "45",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "46",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "47",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "48",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "49",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "50",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "51",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "52",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "53",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "54",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "55",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "56",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "57",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "58",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "59",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "60",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "61",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "62",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "63",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "64",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "65",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "66",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "67",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "68",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "69",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "70",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "71",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "72",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "73",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "74",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "75",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "76",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "77",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "78",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "79",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "80",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "81",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "82",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "83",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "84",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "85",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "86",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "87",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "88",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "89",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "90",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "91",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "92",
-    "enabled": false,
+    "reserved": false,
     "payed": false
   },
   {
     "id": "93",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "94",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "95",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "96",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   },
   {
     "id": "97",
-    "enabled": false,
+    "reserved": false,
     "payed": true
   },
   {
     "id": "98",
-    "enabled": true,
+    "reserved": true,
     "payed": false
   },
   {
     "id": "99",
-    "enabled": true,
+    "reserved": true,
     "payed": true
   }
 ]

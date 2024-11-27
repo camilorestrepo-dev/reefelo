@@ -1,6 +1,6 @@
 export interface TicketData {
   id: string;
-  enabled: boolean;
+  reserved: boolean;
   payed: boolean;
   clientName?: string;
   clientPhone?: string;

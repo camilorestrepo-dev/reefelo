@@ -3,12 +3,7 @@ import FormInputText from "../FormInputText";
 
 test("reder corectly", () => {
   const component = render(
-    <FormInputText
-      defaultValue="hello"
-      label="Description"
-      name="desc"
-      placeholder="Type description"
-    />,
+    <FormInputText value="hello" label="Description" name="desc" placeholder="Type description" />,
   );
   expect(component.container).toMatchSnapshot();
 });
@@ -16,7 +11,7 @@ test("reder corectly", () => {
 test("reder corectly with error", () => {
   const component = render(
     <FormInputText
-      defaultValue="hello"
+      value="hello"
       label="Description"
       name="desc"
       placeholder="Type description"

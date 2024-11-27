@@ -1,12 +1,12 @@
 @import "../../styles/shared.scss";
 
-label.form-input {
+label.form-input-checkbox {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: $spacing-4;
   margin-bottom: $spacing-16;
-
+  
   &.input-error {
     input {
       border-color: $error-color;
@@ -14,9 +14,16 @@ label.form-input {
   }
 
   &.input-disabled {
-    span:first-of-type{
+    div span {
       color: $grey;
     }
+  }
+  
+  div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-4;
   }
 
   input {

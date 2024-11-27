@@ -1,5 +1,6 @@
 {
   "actions": {
+    "back": "Volver",
     "cancel": "Cancelar",
     "save": "Guardar"
   },
@@ -23,6 +24,12 @@
   "prize": "Premio",
   "ticketsNumber": "Número de boletas",
   "manageTitle": "Administra tus Rifas",
+  "editTicket": "Modificar Boleta",
+  "clientName": "Nombre",
+  "clientPhone": "Teléfono",
+  "clientNameHint": "Jose Perez",
+  "payed": "Pagado",
+  "reservedTicket": "Boleta Reservada",
   "signIn": "Iniciar Sesión",
   "continueWithGoogle": "Continuar con Google",
   "signOut": "Cerrar Sesión",

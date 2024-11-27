@@ -16,12 +16,12 @@ const RaffleTickets: React.FC<RaffleTicketsProps> = ({
   return (
     <div className={classnames("raffle-tickets-container", { "small-view": tickets.length == 10 })}>
       {tickets.map((ticket) => {
-        const { id, enabled, payed } = ticket;
+        const { id, reserved, payed } = ticket;
         return (
           <label
             className={classnames("raffle-ticket-card", {
-              "disabled-ticket": !enabled,
-              "payed-ticket": !enabled && payed,
+              "disabled-ticket": reserved,
+              "payed-ticket": reserved && payed,
             })}
             key={id}
             data-testid={`ticket-btn-${id}`}

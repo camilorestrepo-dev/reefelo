@@ -10,6 +10,7 @@ import { RaffleService } from "../../services/raffle/raffle-service";
 import Loading from "../../components/Loading/Loading";
 import ErrorModal from "../../components/Modal/ErrorModal";
 import InlineSelect from "../../components/InlineSelect/InlineSelect";
+import { useInputChangeHandler } from "../../hooks/useInputChangeHandler";
 
 type RaffleFormErrors = {
   name?: string;
@@ -35,17 +36,7 @@ const CreateRaffle: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const onChangeData: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const value = e.target.type === "number" ? e.target.valueAsNumber : e.target.value;
-    setNewRaffle((oldValue) => ({
-      ...oldValue,
-      [e.target.name]: value,
-    }));
-    setFormValidation((oldValue) => ({
-      ...oldValue,
-      [e.target.name]: null,
-    }));
-  };
+  const onChangeData = useInputChangeHandler(setNewRaffle, setFormValidation);
 
   const onChangeTicketsNumber = (ticketsNumber: PowerOfTen) => {
     setNewRaffle((oldValue) => ({
@@ -95,7 +86,7 @@ const CreateRaffle: React.FC = () => {
             label={t("name")}
             name="name"
             placeholder={t("nameHint")}
-            defaultValue={newRaffle.name}
+            value={newRaffle.name}
             error={formValidation.name}
             onChange={onChangeData}
           />
@@ -103,7 +94,7 @@ const CreateRaffle: React.FC = () => {
             label={t("prize")}
             name="prize"
             placeholder={t("prize")}
-            defaultValue={newRaffle.prize}
+            value={newRaffle.prize}
             error={formValidation.prize}
             onChange={onChangeData}
           />
@@ -111,7 +102,7 @@ const CreateRaffle: React.FC = () => {
             label={t("description")}
             name="description"
             placeholder={t("descriptionHint")}
-            defaultValue={newRaffle.description}
+            value={newRaffle.description}
             error={formValidation.description}
             onChange={onChangeData}
           />
@@ -120,13 +111,13 @@ const CreateRaffle: React.FC = () => {
             type="number"
             name="price"
             placeholder="$900"
-            defaultValue={newRaffle.price}
+            value={newRaffle.price}
             error={formValidation.price}
             onChange={onChangeData}
           />
           <InlineSelect
             label={t("ticketsNumber")}
-            defaultValue={newRaffle.ticketsNumber}
+            value={newRaffle.ticketsNumber}
             options={[
               { label: "10", value: 10 },
               { label: "100", value: 100 },

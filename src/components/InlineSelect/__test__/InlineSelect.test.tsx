@@ -6,7 +6,7 @@ test("render correctly", () => {
   const component = render(
     <InlineSelect
       label="Tickets Options"
-      defaultValue={10}
+      value={10}
       options={[
         { label: "10", value: 10 },
         { label: "100", value: 100 },
@@ -26,7 +26,7 @@ test("click in the right option", async () => {
   render(
     <InlineSelect
       label="Tickets Options"
-      defaultValue={10}
+      value={10}
       options={[
         { label: "10", value: 10 },
         { label: "100", value: 100 },

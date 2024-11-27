@@ -10,7 +10,7 @@ type InlineOption = {
 
 type InlineSelectProps = {
   className?: string;
-  defaultValue?: number | string;
+  value?: number | string;
   label?: string;
   options: InlineOption[];
   onChange?: (newOptionValue: number | string) => void;
@@ -18,12 +18,12 @@ type InlineSelectProps = {
 
 const InlineSelect: React.FC<InlineSelectProps> = ({
   className,
-  defaultValue,
+  value,
   label,
   options,
   onChange,
 }: InlineSelectProps) => {
-  const [selectedOption, setSelecterOption] = useState(defaultValue);
+  const [selectedOption, setSelecterOption] = useState(value);
 
   const changeOption = (option: InlineOption) => {
     const value = option.value;

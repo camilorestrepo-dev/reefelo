@@ -7,7 +7,8 @@ type FormInputTextProps = {
   name: string;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
-  defaultValue: string | number | readonly string[];
+  value?: string | number | readonly string[];
+  disabled?: boolean;
   error?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
@@ -17,18 +18,22 @@ const FormInputText: React.FC<FormInputTextProps> = ({
   name,
   placeholder,
   type = "text",
-  defaultValue,
+  value = "",
+  disabled = false,
   error,
   onChange,
 }: FormInputTextProps) => {
   return (
-    <label className={classnames("form-input", { "input-error": error })}>
+    <label
+      className={classnames("form-input", { "input-error": error, "input-disabled": disabled })}
+    >
       <span>{label}</span>
       <input
         type={type}
         name={name}
         placeholder={placeholder}
-        defaultValue={defaultValue}
+        value={value}
+        disabled={disabled}
         onChange={onChange}
       />
       {error && <span className="error-message">{error}</span>}

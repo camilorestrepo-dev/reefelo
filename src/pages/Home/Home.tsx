@@ -38,7 +38,7 @@ const Home: React.FC = () => {
         </Button>
       </section>
       <section className="raffles-list-section">
-        {raffles && raffles.length && (
+        {raffles && raffles.length > 0 && (
           <div className="raffle-grid">
             {raffles.map((raffle) => (
               <RaffleCard key={raffle.id} {...raffle} onClick={() => navigateToRaffle(raffle)} />
