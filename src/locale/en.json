@@ -4,6 +4,7 @@
     "save": "Save"
   },
   "error": {
+    "generic": "There is an error. Try again later.",
     "required": "Required field"
   },
   "createRaffle": "Create Raffle",

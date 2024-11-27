@@ -4,6 +4,7 @@
     "save": "Guardar"
   },
   "error": {
+    "generic": "Tenemos un error. Intenta mas tarde.",
     "required": "Campo requerido"
   },
   "createRaffle": "Crear Rifa",

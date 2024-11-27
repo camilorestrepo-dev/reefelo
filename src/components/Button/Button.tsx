@@ -1,16 +1,18 @@
+import { PropsWithChildren } from "react";
 import classnames from "classnames";
 import "./Button.scss";
 
-export type ButtonProps = {
-  label: string;
+export interface ButtonProps extends PropsWithChildren {
+  className?: string;
   type?: "button" | "reset" | "submit";
   variant: "solid" | "outline" | "link";
   disabled?: boolean;
   onClick?: VoidFunction;
-};
+}
 
 const Button: React.FC<ButtonProps> = ({
-  label,
+  className,
+  children,
   type,
   variant,
   disabled,
@@ -18,11 +20,11 @@ const Button: React.FC<ButtonProps> = ({
 }: ButtonProps) => (
   <button
     type={type || "button"}
-    className={classnames("custom-btn", `${variant}-btn`)}
+    className={classnames("custom-btn", `${variant}-btn`, { "disabled-btn": disabled }, className)}
     onClick={onClick}
     disabled={disabled}
   >
-    {label}
+    {children}
   </button>
 );
 

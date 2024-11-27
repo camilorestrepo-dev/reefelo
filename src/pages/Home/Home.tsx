@@ -12,7 +12,9 @@ const Home: React.FC = () => {
     <MainContainer>
       <section>
         <h2>My Raffles</h2>
-        <Button label="New Raffle" variant="solid" onClick={navigateToNewRaffle} />
+        <Button variant="solid" onClick={navigateToNewRaffle}>
+          New Raffle
+        </Button>
       </section>
     </MainContainer>
   );

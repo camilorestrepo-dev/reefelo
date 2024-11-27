@@ -6,8 +6,9 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { RaffleData } from "../../models/raffle";
 import FormInputText from "../../components/FormInputText/FormInputText";
-// import { RaffleService } from "../../services/raffle/raffle-service";
+import { RaffleService } from "../../services/raffle/raffle-service";
 import Loading from "../../components/Loading/Loading";
+import ErrorModal from "../../components/Modal/ErrorModal";
 
 type RaffleFormErrors = {
   name?: string;
@@ -26,6 +27,8 @@ const CreateRaffle: React.FC = () => {
   });
   const [formValidation, setFormValidation] = useState<RaffleFormErrors>({});
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -58,17 +61,20 @@ const CreateRaffle: React.FC = () => {
     e.preventDefault();
     console.log("click");
     if (validateForm()) {
+      setLoading(true);
       try {
-        setLoading(true);
-        // await RaffleService.save(newRaffle);
-        await new Promise((resolve) => setTimeout(resolve, 5000));
-        setLoading(false);
+        await RaffleService.save(newRaffle);
         navigate("/");
       } catch (e) {
         console.error(e);
-        // TODO
+        setError("error.generic");
       }
+      setLoading(false);
     }
+  };
+
+  const closeErrorModal = () => {
+    setError("");
   };
 
   return (
@@ -120,18 +126,22 @@ const CreateRaffle: React.FC = () => {
           />
           <div className="buttons-section">
             <Button
-              label={t("actions.cancel")}
               variant="outline"
               disabled={loading}
               onClick={() => {
                 navigate("/");
               }}
-            />
-            <Button label={t("actions.save")} type="submit" variant="solid" disabled={loading} />
+            >
+              {t("actions.cancel")}
+            </Button>
+            <Button type="submit" variant="solid" disabled={loading}>
+              {t("actions.save")}
+            </Button>
           </div>
         </form>
       </section>
       <Loading isOpen={loading} />
+      <ErrorModal errorMessage={t(error)} isOpen={!!error} onClose={closeErrorModal}></ErrorModal>
     </MainContainer>
   );
 };

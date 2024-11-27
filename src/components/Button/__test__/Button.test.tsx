@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import Button, { ButtonProps } from "../Button";
 
 const props: ButtonProps = {
-  label: "Some button",
+  children: <>Some button</>,
   variant: "solid",
 };
 

@@ -3,5 +3,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "jsx": "react-jsx"
-  }
+  },
+  "include": ["src", "jest.setup.ts", "types/custom.d.ts"]
 }

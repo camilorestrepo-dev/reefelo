@@ -6,9 +6,11 @@
   font-size: medium;
   font-weight: bold;
   padding: $spacing-8 $spacing-12;
+  cursor: pointer;
 
-  &:hover {
-    cursor: pointer;
+  &.disabled-btn {
+    cursor: default;
+    background-color: $grey;
   }
 
   &.solid-btn {
