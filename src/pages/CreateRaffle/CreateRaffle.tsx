@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import MainContainer from "../../components/MainContainer/MainContainer";
-import "./CreateRaffle.scss";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { RaffleData } from "../../models/raffle";
+import { PowerOfTen, RaffleData } from "../../models/raffle";
 import FormInputText from "../../components/FormInputText/FormInputText";
 import { RaffleService } from "../../services/raffle/raffle-service";
 import Loading from "../../components/Loading/Loading";
 import ErrorModal from "../../components/Modal/ErrorModal";
+import InlineSelect from "../../components/InlineSelect/InlineSelect";
+
+import "./CreateRaffle.scss";
 
 type RaffleFormErrors = {
   name?: string;
@@ -41,6 +43,13 @@ const CreateRaffle: React.FC = () => {
     setFormValidation((oldValue) => ({
       ...oldValue,
       [e.target.name]: null,
+    }));
+  };
+
+  const onChangeTicketsNumber = (ticketsNumber: PowerOfTen) => {
+    setNewRaffle((oldValue) => ({
+      ...oldValue,
+      ticketsNumber,
     }));
   };
 
@@ -115,14 +124,15 @@ const CreateRaffle: React.FC = () => {
             error={formValidation.price}
             onChange={onChangeData}
           />
-          <FormInputText
+          <InlineSelect
             label={t("ticketsNumber")}
-            type="number"
-            name="ticketsNumber"
-            placeholder={t("ticketsNumber")}
             defaultValue={newRaffle.ticketsNumber}
-            error={formValidation.ticketsNumber}
-            onChange={onChangeData}
+            options={[
+              { label: "10", value: 10 },
+              { label: "100", value: 100 },
+              { label: "1000", value: 1000 },
+            ]}
+            onChange={onChangeTicketsNumber}
           />
           <div className="buttons-section">
             <Button

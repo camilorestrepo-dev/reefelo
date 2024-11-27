@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div>
+  <div
+    class="inline-select-container"
+  >
+    <label>
+      Tickets Options
+    </label>
+    <div
+      class="options-container"
+    >
+      <button
+        class="custom-btn outline-btn selected"
+        type="button"
+      >
+        10
+      </button>
+      <button
+        class="custom-btn outline-btn"
+        type="button"
+      >
+        100
+      </button>
+      <button
+        class="custom-btn outline-btn"
+        type="button"
+      >
+        1000
+      </button>
+    </div>
+  </div>
+</div>
+`;

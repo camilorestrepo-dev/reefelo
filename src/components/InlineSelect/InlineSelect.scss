@@ -1,0 +1,28 @@
+@import "../../styles/shared.scss";
+
+.inline-select-container {
+  label {
+    display: block;
+    margin-bottom: $spacing-4;
+  }
+
+  .options-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-4;
+
+    .custom-btn {
+      &:not(.selected) {
+        color: $grey;
+        border-color: $grey;
+      }
+
+      &.selected {
+        color: $text-color;
+        border-color: $text-color;
+        border-width: 2px;
+      }
+    }
+  }
+}
