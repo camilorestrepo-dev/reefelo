@@ -9,6 +9,7 @@
     "signUp": "Error en el registro. Intenta mas tarde o usando otra cuenta."
   },
   "createRaffle": "Crear Rifa",
+  "raffles": "Mis Rifas",
   "name": "Nombre",
   "nameHint": "Objetivo de la rifa",
   "description": "Descripción",

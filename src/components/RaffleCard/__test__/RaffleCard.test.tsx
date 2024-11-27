@@ -8,6 +8,7 @@ const raffle: RaffleData = {
   price: 500,
   prize: "1000",
   ticketsNumber: 100,
+  userId: "testing-1",
 };
 
 test("reder corectly", () => {

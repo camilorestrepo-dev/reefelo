@@ -19,8 +19,10 @@ type RaffleFormErrors = {
   ticketsNumber?: string;
 };
 
+type RaffleDataForm = Omit<RaffleData, "userId">;
+
 const CreateRaffle: React.FC = () => {
-  const [newRaffle, setNewRaffle] = useState<RaffleData>({
+  const [newRaffle, setNewRaffle] = useState<RaffleDataForm>({
     name: "",
     description: "",
     prize: "",
@@ -67,12 +69,11 @@ const CreateRaffle: React.FC = () => {
 
   const saveRaffle: React.FormEventHandler = async (e) => {
     e.preventDefault();
-    console.log("click");
     if (validateForm()) {
       setLoading(true);
       try {
-        await RaffleService.save(newRaffle);
-        navigate("/");
+        await RaffleService.save({ ...newRaffle });
+        navigate("/home");
       } catch (e) {
         console.error(e);
         setError("error.generic");

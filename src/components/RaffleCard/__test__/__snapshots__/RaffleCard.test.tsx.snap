@@ -65,7 +65,9 @@ exports[`reder corectly 1`] = `
 }"
           width="20"
         />
-        1000
+        <p>
+          1000
+        </p>
       </div>
     </div>
   </div>

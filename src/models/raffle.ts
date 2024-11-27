@@ -9,5 +9,7 @@ export interface RaffleData {
   prize: string;
   ticketsNumber: PowerOfTen;
   id?: string;
+  userId?: string;
   tickets?: TicketData[];
+  createdAt?: Date;
 }

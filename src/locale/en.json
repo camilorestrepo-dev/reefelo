@@ -9,6 +9,7 @@
     "signUp": "Error signing in. Please try later or using other account."
   },
   "createRaffle": "Create Raffle",
+  "raffles": "My Raffles",
   "name": "Name",
   "nameHint": "Goal of this raffle",
   "description": "Description",

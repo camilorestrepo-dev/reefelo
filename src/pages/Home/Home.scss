@@ -1,0 +1,30 @@
+@import "../../styles/shared.scss";
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.raffles-list-section {
+  max-width: 100%;
+
+  .raffle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: $spacing-16;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .raffles-list-section .raffle-grid {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .raffles-list-section .raffle-grid {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+  }
+}

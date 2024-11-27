@@ -33,7 +33,7 @@ const RaffleCard: React.FC<RaffleCardProps> = ({
         </div>
         <div className="info-row">
           <Icon icon="prize" size={20} />
-          {prize}
+          <p>{prize}</p>
         </div>
       </div>
     </div>
