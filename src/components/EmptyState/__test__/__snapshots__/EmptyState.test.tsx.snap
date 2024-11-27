@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div>
+  <div
+    class="empty-state-container"
+  >
+    <img
+      class="empty-state-image"
+      src="function SvgEmpty(props) {
+  return React.createElement(
+    'svg', 
+    Object.assign({}, props, {'data-file-name': SvgEmpty.name})
+  );
+}"
+    />
+    <h2>
+      emptyState.title
+    </h2>
+    <p>
+      emptyState.subtitle
+    </p>
+    <button
+      class="custom-btn outline-btn retry"
+      type="button"
+    >
+      tryAgain
+    </button>
+  </div>
+</div>
+`;
