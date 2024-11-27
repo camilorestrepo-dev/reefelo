@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import "./Button.scss";
 
-type ButtonProps = {
+export type ButtonProps = {
   label: string;
   type?: "button" | "reset" | "submit";
   variant: "solid" | "outline" | "link";

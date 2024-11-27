@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reder corectly 1`] = `
+<div>
+  <div
+    class="page-container"
+  >
+    <main
+      class="main-continer"
+    >
+      <div>
+        Some content
+      </div>
+    </main>
+  </div>
+</div>
+`;
