@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render link 1`] = `
+<div>
+  <button
+    class="custom-btn link-btn"
+    type="button"
+  >
+    Some button
+  </button>
+</div>
+`;
+
+exports[`render outline 1`] = `
+<div>
+  <button
+    class="custom-btn outline-btn"
+    type="button"
+  >
+    Some button
+  </button>
+</div>
+`;
+
+exports[`render solid 1`] = `
+<div>
+  <button
+    class="custom-btn solid-btn"
+    type="button"
+  >
+    Some button
+  </button>
+</div>
+`;
