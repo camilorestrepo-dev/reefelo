@@ -16,6 +16,7 @@
   },
   "tryAgain": "Reload",
   "createRaffle": "Create Raffle",
+  "editRaffle": "Edit Raffle",
   "raffles": "My Raffles",
   "name": "Name",
   "nameHint": "Goal of this raffle",

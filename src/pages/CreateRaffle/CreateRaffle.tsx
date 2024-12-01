@@ -1,9 +1,9 @@
 import "./CreateRaffle.scss";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import MainContainer from "../../components/MainContainer/MainContainer";
 import Button from "../../components/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PowerOfTen, RaffleData } from "../../models/raffle";
 import FormInputText from "../../components/FormInputText/FormInputText";
 import { RaffleService } from "../../services/raffle/raffle-service";
@@ -33,7 +33,9 @@ const CreateRaffle: React.FC = () => {
   const [formValidation, setFormValidation] = useState<RaffleFormErrors>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState("");
-
+  // Available only when it is an edition
+  const { raffleId } = useParams();
+  const isEdit = useMemo(() => !!raffleId, [raffleId]);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -53,7 +55,7 @@ const CreateRaffle: React.FC = () => {
       description: !newRaffle.description ? t("error.required") : "",
       prize: !newRaffle.prize ? t("error.required") : "",
       price: !newRaffle.price ? t("error.required") : "",
-      ticketsNumber: !newRaffle.ticketsNumber ? t("error.required") : "",
+      ticketsNumber: !isEdit && !newRaffle.ticketsNumber ? t("error.required") : "",
     };
     setFormValidation(errors);
     return Object.values(errors).reduce((isValid, error) => isValid && !error, true);
@@ -79,15 +81,61 @@ const CreateRaffle: React.FC = () => {
     }
   };
 
+  const updateRaffle: React.FormEventHandler = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setLoading(true);
+      try {
+        await RaffleService.updateRaffle({ ...newRaffle, id: raffleId });
+        navigate(-1);
+      } catch (e) {
+        if (e instanceof RaffleError) {
+          setError(`error.${e.message}`);
+          return;
+        }
+        console.error(e);
+        setError("error.generic");
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   const closeErrorModal = () => {
     setError("");
   };
 
+  useEffect(() => {
+    if (!isEdit || !raffleId) {
+      return;
+    }
+    setLoading(true);
+    RaffleService.loadRaffle(raffleId)
+      .then((raffleData) => {
+        setNewRaffle({
+          name: raffleData.name,
+          description: raffleData.description,
+          prize: raffleData.prize,
+          price: raffleData.price,
+        });
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (error instanceof RaffleError) {
+          setError(`error.${error.message}`);
+          return;
+        }
+        console.error(error);
+        setError("error.generic");
+      });
+  }, [isEdit, raffleId]);
+
   return (
     <MainContainer>
       <section className="create-raffle-container">
-        <h2>{t("createRaffle")}</h2>
-        <form onSubmit={saveRaffle}>
+        <h2>{t(isEdit ? "editRaffle" : "createRaffle")}</h2>
+        <form onSubmit={isEdit ? updateRaffle : saveRaffle}>
           <FormInputText
             label={t("name")}
             name="name"
@@ -129,6 +177,7 @@ const CreateRaffle: React.FC = () => {
               { label: "100", value: 100 },
               { label: "1000", value: 1000 },
             ]}
+            disabled={isEdit}
             onChange={onChangeTicketsNumber}
           />
           <div className="buttons-section">

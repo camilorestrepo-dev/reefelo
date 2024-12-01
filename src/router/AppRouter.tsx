@@ -14,6 +14,7 @@ const AppRouter: React.FC = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/raffle/:raffleId" element={<Raffle />} />
           <Route path="/raffle/create" element={<CreateRaffle />} />
+          <Route path="/raffle/edit/:raffleId" element={<CreateRaffle />} />
           <Route path="/home" element={<Home />} />
         </Route>
         <Route path="*" element={<NotFound />} />

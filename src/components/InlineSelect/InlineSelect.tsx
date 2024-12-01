@@ -12,6 +12,7 @@ type InlineSelectProps = {
   className?: string;
   value?: number | string;
   label?: string;
+  disabled?: boolean;
   options: InlineOption[];
   onChange?: (newOptionValue: number | string) => void;
 };
@@ -20,6 +21,7 @@ const InlineSelect: React.FC<InlineSelectProps> = ({
   className,
   value,
   label,
+  disabled,
   options,
   onChange,
 }: InlineSelectProps) => {
@@ -40,6 +42,7 @@ const InlineSelect: React.FC<InlineSelectProps> = ({
             variant="outline"
             key={`option-${option.value}`}
             className={classnames({ selected: selectedOption === option.value })}
+            disabled={disabled}
             onClick={() => changeOption(option)}
           >
             {option.label}
