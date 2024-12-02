@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const DotenvPlugin = require("dotenv-webpack");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -16,6 +17,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
       favicon: path.join(__dirname, "public", "favicon.ico"),
+    }),
+    new CopyPlugin({
+      patterns: ["public/_redirects"],
     }),
   ],
   module: {
