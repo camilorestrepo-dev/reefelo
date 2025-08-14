@@ -1,6 +1,6 @@
 # Reefelo
 
-A project to manage raffles, a public project
+A project to manage raffles, a public project. You can check it out on https://reefelo.netlify.app/
 
 ## Run
 
