@@ -1,0 +1,52 @@
+name: Compare and Comment Release PR
+
+on:
+  pull_request:
+    branches:
+      - main  # Trigger when there's a PR towards the master branch
+    paths:
+      - 'release/**'  # Only for changes in release branches
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch tags
+        run: |
+          git fetch --tags  # Fetch all tags
+
+      - name: Get last tag on main
+        id: get_last_tag
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 origin/main)
+          echo "Last tag on main: $LAST_TAG"
+          echo "LAST_TAG=$LAST_TAG" >> $GITHUB_ENV
+
+      - name: Compare with Last Tag and List PRs
+        id: compare
+        run: |
+          CURRENT_BRANCH=${GITHUB_REF##*/}
+          echo "Current Release Branch: $CURRENT_BRANCH"
+
+          DIFF=$(git log $LAST_TAG...$CURRENT_BRANCH --oneline)
+          echo "Differences between $LAST_TAG and $CURRENT_BRANCH:"
+          echo "$DIFF"
+
+          # Extract PR numbers from the commit messages
+          PR_NUMBERS=$(echo "$DIFF" | grep -o '#[0-9]*' | sort -u | sed 's/^/- /')
+          echo "Pull Request Numbers:"
+          echo "$PR_NUMBERS"
+          echo "PR_NUMBERS=$PR_NUMBERS" >> $GITHUB_ENV
+
+      - name: Add PR numbers as a comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## Pull Requests
+            The following PRs are included in this release:
+            ${{ env.PR_NUMBERS }}
