@@ -27,6 +27,9 @@ jobs:
         run: |
           git fetch origin main --tags
 
+      - name: Fetch release branch
+        run: git fetch origin ${{ github.head_ref }}
+
       - name: Get last tag on main
         id: get_last_tag
         run: |
@@ -40,17 +43,21 @@ jobs:
           CURRENT_BRANCH="${{ github.head_ref }}"
           echo "Current Release Branch: $CURRENT_BRANCH"
 
-          DIFF=$(git log $LAST_TAG...$CURRENT_BRANCH --oneline)
+          DIFF=$(git log --no-decorate $LAST_TAG...origin/$CURRENT_BRANCH --oneline)
           echo "Differences between $LAST_TAG and $CURRENT_BRANCH:"
           echo "$DIFF"
 
-          PR_NUMBERS=$(echo "$DIFF" | grep -o '#[0-9]*' | sort -u | sed 's/^/- /')
+          PR_NUMBERS=$(echo "$DIFF" | grep -o "#[0-9]*" | sort -u | sed 's/^/- /')
           if [ -z "$PR_NUMBERS" ]; then
             PR_NUMBERS="(No PRs found)"
           fi
           echo "Pull Request Numbers:"
           echo "$PR_NUMBERS"
-          echo "PR_NUMBERS=$PR_NUMBERS" >> $GITHUB_ENV
+          {
+            echo "PR_NUMBERS<<EOF"
+            echo "$PR_NUMBERS"
+            echo "EOF"
+          } >> $GITHUB_ENV
 
       - name: Add or update PR comment
         uses: peter-evans/create-or-update-comment@v4
