@@ -2,22 +2,30 @@ name: Compare and Comment Release PR
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
     branches:
-      - main  # Trigger when there's a PR towards the master branch
-    paths:
-      - 'release/**'  # Only for changes in release branches
+      - main  # PR target branch
 
 jobs:
   compare:
+    if: ${{ startsWith(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Run only for release/* → master PRs
+        run: echo "Running for ${{ github.head_ref }} into ${{ github.base_ref }}"
 
-      - name: Fetch tags
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for tags
+
+      - name: Fetch tags and main branch
         run: |
-          git fetch --tags  # Fetch all tags
+          git fetch origin main --tags
 
       - name: Get last tag on main
         id: get_last_tag
@@ -29,24 +37,28 @@ jobs:
       - name: Compare with Last Tag and List PRs
         id: compare
         run: |
-          CURRENT_BRANCH=${GITHUB_REF##*/}
+          CURRENT_BRANCH="${{ github.head_ref }}"
           echo "Current Release Branch: $CURRENT_BRANCH"
 
           DIFF=$(git log $LAST_TAG...$CURRENT_BRANCH --oneline)
           echo "Differences between $LAST_TAG and $CURRENT_BRANCH:"
           echo "$DIFF"
 
-          # Extract PR numbers from the commit messages
           PR_NUMBERS=$(echo "$DIFF" | grep -o '#[0-9]*' | sort -u | sed 's/^/- /')
+          if [ -z "$PR_NUMBERS" ]; then
+            PR_NUMBERS="(No PRs found)"
+          fi
           echo "Pull Request Numbers:"
           echo "$PR_NUMBERS"
           echo "PR_NUMBERS=$PR_NUMBERS" >> $GITHUB_ENV
 
-      - name: Add PR numbers as a comment
-        uses: peter-evans/create-or-update-comment@v1
+      - name: Add or update PR comment
+        uses: peter-evans/create-or-update-comment@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             ## Pull Requests
             The following PRs are included in this release:
             ${{ env.PR_NUMBERS }}
+          comment-identifier: release-pr-summary
