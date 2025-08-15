@@ -1,5 +1,5 @@
 name: Compare and Comment Release PR
-
+run-name: "🚀 ${{ github.actor }} is creating a new Release from 📦 ${{ github.head_ref }} → ${{ github.base_ref }} ✨"
 on:
   pull_request:
     types:
