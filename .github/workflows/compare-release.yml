@@ -27,6 +27,9 @@ jobs:
         run: |
           git fetch origin main --tags
 
+      - name: Fetch release branch
+        run: git fetch origin ${{ github.head_ref }}
+
       - name: Get last tag on main
         id: get_last_tag
         run: |
