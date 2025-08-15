@@ -43,7 +43,7 @@ jobs:
           CURRENT_BRANCH="${{ github.head_ref }}"
           echo "Current Release Branch: $CURRENT_BRANCH"
 
-          DIFF=$(git log $LAST_TAG...$CURRENT_BRANCH --oneline)
+          DIFF=$(git log $LAST_TAG...origin/$CURRENT_BRANCH --oneline)
           echo "Differences between $LAST_TAG and $CURRENT_BRANCH:"
           echo "$DIFF"
 
